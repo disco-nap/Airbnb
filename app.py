@@ -1,3 +1,6 @@
+#import OS
+import OS
+
 # import Flask
 import numpy as np
 
@@ -21,7 +24,7 @@ pymysql.install_as_MySQLdb()
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("mysql://root:password@localhost:3306/project_3")
+engine = create_engine(os.environ.get('DATABASE_URL', '') or "mysql://root:password@localhost:3306/project_3")
 conn = engine.connect()
 # Query All Records in the the Database
 data = pd.read_sql("SELECT * FROM listings_data", conn)
